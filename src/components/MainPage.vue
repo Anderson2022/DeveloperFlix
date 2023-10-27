@@ -4,7 +4,6 @@ import Carousel from '../components/Carousel .vue'
 import VideoModal from '@/components/VideoModal.vue';
 import Loop from '@/assets/Loop.png';
 import { ref } from 'vue';
-
 const showModal = ref(false);
 
 const openModal = () => {
@@ -18,6 +17,7 @@ const closeModal = () => {
 </script>
 
 <template>
+
   <div class=" flex flex-col ">
     <div class="text-white mx-auto w-full min-h-screen  h-auto flex flex-col ">
       <Carousel />

@@ -2,10 +2,11 @@
 import DeviFlixImage from '@/assets/DeviFlix.png';
 import DF from '@/assets/DF.png';
 
+
 </script>
 
 <template>
-  <div class="bg-black" >
+  <div class="bg-black relative" >
     <nav class=" bg-opacity-70 relative dark:bg-gray-900 h-20 w-full">
       <div class="max-w-full w-full pl-6 flex flex-wrap items-center h-20 mx-auto ">
         <div class="flex items-center ">
@@ -118,5 +119,6 @@ import DF from '@/assets/DF.png';
       </div>
     </nav>   
   </div>
+
    <RouterView />
 </template>
