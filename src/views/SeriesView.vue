@@ -5,7 +5,7 @@ import LayoutPage from '@/components/LayoutPage.vue';
 </script>
 
 <template>
-    <div class="series">
+    <div>
         <LayoutPage />
         <error />
     </div>
