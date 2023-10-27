@@ -1,0 +1,9 @@
+@import './base.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.custom-navigation .carousel__nav-button {
+  color: white;
+  /* Set the color to white */
+}
