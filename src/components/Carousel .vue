@@ -2,12 +2,12 @@
 import { ref, onMounted } from 'vue';
 
 const images = ref([
-  '@/assets/land.jpg',
-  '@/assets/land2.jpg',
-  '@/assets/land(3).jpg',
-  '@/assets/land(4).jpg',
-  '@/assets/land(5).jpg',
-  '@/assets/land(6).jpg',
+  './src/assets/land.jpg',
+  './src/assets/land2.jpg',
+  './src/assets/land(3).jpg',
+  './src/assets/land(4).jpg',
+  './src/assets/land(5).jpg',
+  './src/assets/land(6).jpg',
 ]);
 
 const currentIndex = ref(0);
