@@ -10,7 +10,7 @@ import DF from '@/assets/DF.png';
     <nav class=" bg-opacity-70 relative dark:bg-gray-900 h-20 w-full">
       <div class="max-w-full w-full pl-6 flex flex-wrap items-center h-20 mx-auto ">
         <div class="flex items-center ">
-            <a href="/Inicio">
+            <a href="/">
           <img :src="DeviFlixImage" class="w-28" alt="DevFlix" />
           </a>
         </div>
@@ -93,7 +93,7 @@ import DF from '@/assets/DF.png';
           <ul
             class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
-              <a href="/Inicio"
+              <a href="/"
                 class="block py-2 pl-3 pr-4 text-white bg-white rounded md:bg-transparent md:text-white md:p-0 md:dark:text-white "
                 aria-current="page">Inicio</a>
             </li>
