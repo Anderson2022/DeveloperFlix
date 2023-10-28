@@ -6,12 +6,12 @@ import DF from '@/assets/DF.png';
 </script>
 
 <template>
-  <div class="bg-black relative" >
+  <div class="bg-black relative">
     <nav class=" bg-opacity-70 relative dark:bg-gray-900 h-20 w-full">
       <div class="max-w-full w-full pl-6 flex flex-wrap items-center h-20 mx-auto ">
         <div class="flex items-center ">
-            <a href="/">
-          <img :src="DeviFlixImage" class="w-28" alt="DevFlix" />
+          <a href="/">
+            <img :src="DeviFlixImage" class="w-28" alt="DevFlix" />
           </a>
         </div>
         <div class="absolute hidden md:flex space-x-4 right-10 md:order-2">
@@ -105,20 +105,20 @@ import DF from '@/assets/DF.png';
               <a href="/Channels"
                 class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white  md:p-0 dark:text-white md:dark:hover:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Canais</a>
             </li>
-             <li>
-                <a href="/Mais"
-                  class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white  md:p-0 dark:text-white md:dark:hover:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Tutoriais</a>
-              </li>
-               <li>
-                <a href="/service"
-                  class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white  md:p-0 dark:text-white md:dark:hover:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                  Serviços</a>
-              </li>
+            <li>
+              <a href="/Mais"
+                class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white  md:p-0 dark:text-white md:dark:hover:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Tutoriais</a>
+            </li>
+            <li>
+              <a href="/service"
+                class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white  md:p-0 dark:text-white md:dark:hover:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                Serviços</a>
+            </li>
           </ul>
         </div>
       </div>
-    </nav>   
+    </nav>
   </div>
 
-   <RouterView />
+  <RouterView />
 </template>
