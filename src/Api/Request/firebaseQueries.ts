@@ -1,5 +1,5 @@
 import { getFirestore, collection, getDocs, type DocumentData } from 'firebase/firestore';
-import { app } from './firebaseConfig';
+import { app } from '../Config/firebaseConfig';
 
 
 export async function getVideosCollection() {

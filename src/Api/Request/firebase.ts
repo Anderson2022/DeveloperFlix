@@ -1,5 +1,5 @@
 import { getFirestore, collection, addDoc, doc, setDoc, getDoc } from 'firebase/firestore';
-import { app } from './firebaseConfig';
+import { app } from '../Config/firebaseConfig';
 import axios from 'axios';
 
 const COLLECTION_NAME = 'videos';

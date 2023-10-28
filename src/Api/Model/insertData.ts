@@ -1,5 +1,5 @@
 import { getFirestore, collection, addDoc, doc, setDoc, getDoc } from 'firebase/firestore';
-import { app } from './firebaseConfig'; // Substitua pelo caminho correto
+import { app } from '../Config/firebaseConfig'; // Substitua pelo caminho correto
 
 export async function insertData() {
   console.log('wqeqwewqe');

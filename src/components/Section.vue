@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { defineProps, ref, onMounted } from 'vue'
 import { Carousel, Navigation, Slide } from 'vue3-carousel'
-import { getVideosCollection } from '../firebaseQueries';
-import { insertData } from '../insertData';
+import { getVideosCollection } from '../Api/Request/firebaseQueries';
+import { insertData } from '../Api/Model/insertData';
 
 import 'vue3-carousel/dist/carousel.css'
 
