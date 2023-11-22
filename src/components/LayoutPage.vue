@@ -2,7 +2,54 @@
 import DeviFlixImage from '@/assets/DeviFlix.png';
 import DF from '@/assets/DF.png';
 
+import { ref, reactive, onMounted, onBeforeUnmount } from 'vue';
 
+const showDropdown = ref(false);
+const dropdownPosition = reactive({ top: 60, left: 0 });
+
+const toggleDropdown = () => {
+  showDropdown.value = !showDropdown.value;
+  if (showDropdown.value) {
+    updateDropdownPosition();
+  }
+};
+
+const openDropdown = () => {
+  showDropdown.value = true;
+  updateDropdownPosition();
+};
+
+const closeDropdown = () => {
+  showDropdown.value = false;
+};
+
+const updateDropdownPosition = () => {
+  const dropdownTrigger = document.getElementById('dropdown-trigger');
+  if (dropdownTrigger) {
+    const rect = dropdownTrigger.getBoundingClientRect();
+    dropdownPosition.top = rect.bottom + window.scrollY;
+    dropdownPosition.left = rect.left + window.scrollX;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('click', closeDropdownOnOutsideClick);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', closeDropdownOnOutsideClick);
+});
+
+const closeDropdownOnOutsideClick = (event: Event) => {
+  const dropdown = document.getElementById('dropdown');
+  const dropdownTrigger = document.getElementById('dropdown-trigger');
+
+  if (dropdown && dropdownTrigger) {
+    if (!dropdown.contains(event.target as Node) && !dropdownTrigger.contains(event.target as Node)) {
+      closeDropdown();
+    }
+  }
+};
 </script>
 
 <template>
@@ -68,10 +115,51 @@ import DF from '@/assets/DF.png';
 
             </svg>
           </div>
-          <div class=" text-white rounded-lg p-2 flex items-center">
+
+          <div class="text-white rounded-lg p-2 flex items-center relative">
             <img class="w-10 h-10 rounded-full mr-2" :src="DF" />
-            <h5 class="text-lg">John <i class="fa fa-caret-down ml-1"></i></h5>
+            <h5 class="text-lg" @click="toggleDropdown" @mouseover="openDropdown" ref="dropdownTrigger">John <i
+                class="fa fa-caret-down ml-1"></i></h5>
+            <ul v-if="showDropdown"
+              class="menu bg-base-200 w-36   rounded-box flex-col items-center justify-items-center absolute"
+              :style="{ top: dropdownPosition.top + 'px', left: dropdownPosition.left + 'px', zIndex: 9999 }"
+              @mouseover="openDropdown" @mouseleave="closeDropdown">
+              <div class="flex flex-col items-center justify-center">
+                <li class="flex items-center my-8">
+                  <a href="/Login" class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <!-- Substitua o conteúdo do SVG conforme necessário para o ícone de login branco -->
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                      </path>
+                    </svg>
+                    <span class="ml-2">Login</span>
+                  </a>
+                </li>
+
+
+
+                <li class="flex items-center">
+                  <a href="/" class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <!-- Substitua o conteúdo do SVG conforme necessário para o ícone de termos branco -->
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 2H7l-5 9h10V2zM2 11h17m-9 4h5m-5 4h6"></path>
+                    </svg>
+                    <span class="ml-2">Termos</span>
+                  </a>
+                </li>
+
+
+              </div>
+
+
+              <!-- ... mais itens ... -->
+            </ul>
+
           </div>
+
 
         </div>
 
@@ -99,7 +187,7 @@ import DF from '@/assets/DF.png';
             </li>
             <li>
               <a href="/Videos"
-                class="block py-2 pl-3  pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white  md:p-0 md:dark:hover:text-white  dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" 
+                class="block py-2 pl-3  pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white  md:p-0 md:dark:hover:text-white  dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 aria-current="page">
                 Video</a>
             </li>
@@ -120,7 +208,6 @@ import DF from '@/assets/DF.png';
         </div>
       </div>
     </nav>
-  </div>
+</div>
 
-  <RouterView />
-</template>
+<RouterView /></template>

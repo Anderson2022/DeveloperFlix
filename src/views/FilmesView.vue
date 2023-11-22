@@ -4,8 +4,8 @@ import error from '@/components/404Error.vue'
 </script>
 
 <template>
-   <div class="filmes">
-           <LayoutPage/>
-<error/>
+      <div class="filmes">
+            <LayoutPage />
+            <error />
       </div>
 </template>
