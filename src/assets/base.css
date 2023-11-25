@@ -90,7 +90,7 @@ body {
 }
 
 .netflix-scroll-button {
-  background: transparent;
+  background: #000000;
   border: none;
   cursor: pointer;
 }

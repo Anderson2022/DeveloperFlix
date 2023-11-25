@@ -24,6 +24,7 @@ const closeModal = () => {
       <Carousel />
       <div class="flex flex-col relative mt-28 w-96 h-96 ml-12">
         <div class="w-full h-52">
+          
         </div>
         <div class="flex flex-col ">
           <div class="flex items-center">
@@ -59,7 +60,7 @@ const closeModal = () => {
         </div>
       </div>
     </div>
-    <div>
+    <div class="">
       <SectionChannelsPage />
     </div>
 </div></template>

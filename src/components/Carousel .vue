@@ -62,7 +62,7 @@ const nextSlide = () => {
     </div>
     <!-- Slider controls -->
     <button type="button"
-      class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+      class="absolute bg-black top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
       data-carousel-prev @click="prevSlide">
       <!-- Previous button content -->
     </button>
