@@ -130,7 +130,8 @@ const closeDropdownOnOutsideClick = (event: Event) => {
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"
                       stroke="currentColor">
                       <!-- Substitua o conteúdo do SVG conforme necessário para o ícone de login branco -->
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3">
                       </path>
                     </svg>
                     <span class="ml-2">Login</span>
@@ -168,8 +169,8 @@ const closeDropdownOnOutsideClick = (event: Event) => {
           id="navbar-search">
           <div class="relative mt-3 md:hidden">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                fill="none" viewBox="0 0 20 20">
+              <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
               </svg>
@@ -179,35 +180,31 @@ const closeDropdownOnOutsideClick = (event: Event) => {
               placeholder="Search...">
           </div>
           <ul
-            class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-900 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-black md:bg-transparent">
             <li>
-              <a href="/"
-                class="block py-2 pl-3 pr-4 text-white bg-white rounded md:bg-transparent md:text-white md:p-0 md:dark:text-white "
-                aria-current="page">Inicio</a>
+              <a href="/" class="block py-2 px-4 text-white font-bold hover:text-red-600 transition">Início</a>
             </li>
             <li>
-              <a href="/Videos"
-                class="block py-2 pl-3  pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white  md:p-0 md:dark:hover:text-white  dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                aria-current="page">
-                Video</a>
+              <a href="/linguagens"
+                class="block py-2 px-4 text-white font-bold hover:text-red-600 transition">Linguagens</a>
             </li>
             <li>
-              <a href="/Channels"
-                class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white  md:p-0 dark:text-white md:dark:hover:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Canais</a>
+              <a href="/frameworks"
+                class="block py-2 px-4 text-white font-bold hover:text-red-600 transition">Frameworks</a>
             </li>
             <li>
-              <a href="/Mais"
-                class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white  md:p-0 dark:text-white md:dark:hover:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Tutoriais</a>
+              <a href="/tendencias"
+                class="block py-2 px-4 text-white font-bold hover:text-red-600 transition">Tendências</a>
             </li>
             <li>
-              <a href="/service"
-                class="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white  md:p-0 dark:text-white md:dark:hover:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                Serviços</a>
+              <a href="/minha-lista" class="block py-2 px-4 text-white font-bold hover:text-red-600 transition">Minha
+                Lista</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-</div>
+  </div>
 
-<RouterView /></template>
+  <RouterView />
+</template>

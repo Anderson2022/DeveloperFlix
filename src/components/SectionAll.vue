@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { Carousel, Navigation, Slide } from 'vue3-carousel'
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/scrollbar';
+// Remover importação dos módulos Navigation e Scrollbar
 import { getVideosCollection } from '../Api/Request/firebaseQueries';
 import { insertData } from '../Api/Model/insertData';
 import { GetVideos } from '../Api/Request/GetVideos';
-import 'vue3-carousel/dist/carousel.css'
 
 const firstSectionVideos = ref();
 const secondSectionVideos = ref();
@@ -38,10 +41,21 @@ const breakpoints = {
 
 onMounted(async () => {
   await searchVideos();
+  // Adiciona evento para scroll horizontal com roleta do mouse
+  setTimeout(() => {
+    const tracks = document.querySelectorAll('.carousel__track');
+    tracks.forEach(track => {
+      track.addEventListener('wheel', function(e: WheelEvent) {
+        if (e.deltaY === 0) return;
+        e.preventDefault();
+        track.scrollLeft += e.deltaY;
+      });
+    });
+  }, 500);
 });
 
 async function searchVideos() {
-  try {
+
 
     const videos = await getVideosCollection();
 
@@ -113,199 +127,166 @@ async function searchVideos() {
     eighthSectionVideos.value = TypeScriptVideos;
     ninthSectionVideos.value = NodeVideos
 
-  } catch (error) {
-    console.error("Erro na pesquisa de vídeos:", error);
-  }
-}
 
+}
 
 function inserirDados() {
   insertData();
 }
 
 function executeFetch() {
-  try {
-    GetVideos('termo_de_pesquisa');
-    console.log('Consulta e salvamento concluídos com sucesso!');
-  } catch (error) {
-    console.error('Erro ao executar a consulta e o salvamento:', error);
-  }
+  GetVideos('termo_de_pesquisa');
+  console.log('Consulta e salvamento concluídos com sucesso!');
 }
-
-
 
 </script>
 
 <template>
   <div class="">
-    <!-- <div>
-      <button @click="executeFetch">Executar</button>
-    </div> -->
-    <section class="bg-black shadow  ">
+    <section class="bg-black shadow">
       <h3 class="text-gray-200 mx-8 pt-6 text-xl">JavaScript</h3>
-      <Carousel :settings="settings" :breakpoints="breakpoints" class="w-full">
-
-        <Slide v-for="video in firstSectionVideos" :key="video.videoId"
-          class="inline-block mr-1 cursor-pointer transform transition-transform duration-450 origin-center-left hover:opacity-100 hover:scale-150 w-48 z-100">
+      <Swiper :slides-per-view="6" :space-between="24" navigation scrollbar mousewheel class="netflix-swiper">
+        <SwiperSlide v-for="video in firstSectionVideos" :key="video.videoId">
           <a v-if="video.videoId" :href="'https://www.youtube.com/watch?v=' + video.videoId" target="_blank" class="w-52">
-            <img :src="video.URL" alt="Thumbnail" class="w-52" />
+            <img :src="video.URL" alt="Thumbnail" class="w-52 card-slide" />
           </a>
-        </Slide>
-        <template #addons>
-          <Navigation class="custom-navigation" />
-        </template>
-      </Carousel>
+        </SwiperSlide>
+      </Swiper>
     </section>
     <section class="bg-black shadow">
       <h3 class="text-gray-200 mx-8 pt-6 text-xl">PHP</h3>
-      <Carousel :settings="settings" :breakpoints="breakpoints" class="w-full">
-        <Slide v-for="video in secondSectionVideos" :key="video.videoId"
-          class="inline-block mr-1 cursor-pointer transform transition-transform duration-450 origin-center-left hover:opacity-100 hover:scale-150 w-48 z-100">
+      <Swiper :slides-per-view="6" :space-between="24" navigation scrollbar mousewheel class="netflix-swiper">
+        <SwiperSlide v-for="video in secondSectionVideos" :key="video.videoId">
           <a v-if="video.videoId" :href="'https://www.youtube.com/watch?v=' + video.videoId" target="_blank" class="w-52">
-            <img :src="video.URL" alt="Thumbnail" class="w-52" />
+            <img :src="video.URL" alt="Thumbnail" class="w-52 card-slide" />
           </a>
-        </Slide>
-        <template #addons>
-          <Navigation />
-        </template>
-      </Carousel>
+        </SwiperSlide>
+      </Swiper>
     </section>
     <section class="bg-black shadow">
       <h3 class="text-gray-200 mx-8 pt-6 text-xl">Python</h3>
-      <Carousel :settings="settings" :breakpoints="breakpoints" class="w-full">
-        <Slide v-for="video in thirdSectionVideos" :key="video.videoId"
-          class="inline-block mr-1 cursor-pointer transform transition-transform duration-450 origin-center-left hover:opacity-100 hover:scale-150 w-48 z-100">
+      <Swiper :slides-per-view="6" :space-between="24" navigation scrollbar mousewheel class="netflix-swiper">
+        <SwiperSlide v-for="video in thirdSectionVideos" :key="video.videoId">
           <a v-if="video.videoId" :href="'https://www.youtube.com/watch?v=' + video.videoId" target="_blank" class="w-52">
-            <img :src="video.URL" alt="Thumbnail" class="w-52" />
+            <img :src="video.URL" alt="Thumbnail" class="w-52 card-slide" />
           </a>
-        </Slide>
-        <template #addons>
-          <Navigation />
-        </template>
-      </Carousel>
+        </SwiperSlide>
+      </Swiper>
     </section>
-
     <section class="bg-black shadow">
       <h3 class="text-gray-200 mx-8 pt-6 text-xl">Java</h3>
-      <Carousel :settings="settings" :breakpoints="breakpoints" class="w-full">
-        <Slide v-for="video in roomSectionVideos" :key="video.videoId"
-          class="inline-block mr-1 cursor-pointer transform transition-transform duration-450 origin-center-left hover:opacity-100 hover:scale-150 w-48 z-100">
+      <Swiper :slides-per-view="6" :space-between="24" navigation scrollbar mousewheel class="netflix-swiper">
+        <SwiperSlide v-for="video in roomSectionVideos" :key="video.videoId">
           <a v-if="video.videoId" :href="'https://www.youtube.com/watch?v=' + video.videoId" target="_blank" class="w-52">
-            <img :src="video.URL" alt="Thumbnail" class="w-52" />
+            <img :src="video.URL" alt="Thumbnail" class="w-52 card-slide" />
           </a>
-        </Slide>
-        <template #addons>
-          <Navigation />
-        </template>
-      </Carousel>
+        </SwiperSlide>
+      </Swiper>
     </section>
-
     <section class="bg-black shadow">
       <h3 class="text-gray-200 mx-8 pt-6 text-xl">C+</h3>
-      <Carousel :settings="settings" :breakpoints="breakpoints" class="w-full">
-        <Slide v-for="video in fifthSectionVideos" :key="video.videoId"
-          class="inline-block mr-1 cursor-pointer transform transition-transform duration-450 origin-center-left hover:opacity-100 hover:scale-150 w-48 z-100">
+      <Swiper :slides-per-view="6" :space-between="24" navigation scrollbar mousewheel class="netflix-swiper">
+        <SwiperSlide v-for="video in fifthSectionVideos" :key="video.videoId">
           <a v-if="video.videoId" :href="'https://www.youtube.com/watch?v=' + video.videoId" target="_blank" class="w-52">
-            <img :src="video.URL" alt="Thumbnail" class="w-52" />
+            <img :src="video.URL" alt="Thumbnail" class="w-52 card-slide" />
           </a>
-        </Slide>
-        <template #addons>
-          <Navigation />
-        </template>
-      </Carousel>
+        </SwiperSlide>
+      </Swiper>
     </section>
-
     <section class="bg-black shadow">
       <h3 class="text-gray-200 mx-8 pt-6 text-xl">TypeScript</h3>
-      <Carousel :settings="settings" :breakpoints="breakpoints" class="w-full">
-        <Slide v-for="video in sixthSectionVideos" :key="video.videoId"
-          class="inline-block mr-1 cursor-pointer transform transition-transform duration-450 origin-center-left hover:opacity-100 hover:scale-150 w-48 z-100">
+      <Swiper :slides-per-view="6" :space-between="24" navigation scrollbar mousewheel class="netflix-swiper">
+        <SwiperSlide v-for="video in sixthSectionVideos" :key="video.videoId">
           <a v-if="video.videoId" :href="'https://www.youtube.com/watch?v=' + video.videoId" target="_blank" class="w-52">
-            <img :src="video.URL" alt="Thumbnail" class="w-52" />
+            <img :src="video.URL" alt="Thumbnail" class="w-52 card-slide" />
           </a>
-        </Slide>
-        <template #addons>
-          <Navigation />
-        </template>
-      </Carousel>
+        </SwiperSlide>
+      </Swiper>
     </section>
-
+    <section class="bg-black shadow">
+      <h3 class="text-gray-200 mx-8 pt-6 text-xl">C#</h3>
+      <Swiper :slides-per-view="6" :space-between="24" navigation scrollbar mousewheel class="netflix-swiper">
+        <SwiperSlide v-for="video in sixthSectionVideos" :key="video.videoId">
+          <a v-if="video.videoId" :href="'https://www.youtube.com/watch?v=' + video.videoId" target="_blank" class="w-52">
+            <img :src="video.URL" alt="Thumbnail" class="w-52 card-slide" />
+          </a>
+        </SwiperSlide>
+      </Swiper>
+    </section>
+    <section class="bg-black shadow">
+      <h3 class="text-gray-200 mx-8 pt-6 text-xl">Go</h3>
+      <Swiper :slides-per-view="6" :space-between="24" navigation scrollbar mousewheel class="netflix-swiper">
+        <SwiperSlide v-for="video in seventhSectionVideos" :key="video.videoId">
+          <a v-if="video.videoId" :href="'https://www.youtube.com/watch?v=' + video.videoId" target="_blank" class="w-52">
+            <img :src="video.URL" alt="Thumbnail" class="w-52 card-slide" />
+          </a>
+        </SwiperSlide>
+      </Swiper>
+    </section>
     <section class="bg-black shadow">
       <h3 class="text-gray-200 mx-8 pt-6 text-xl">Kotlin</h3>
-      <Carousel :settings="settings" :breakpoints="breakpoints" class="w-full">
-        <Slide v-for="video in sixthSectionVideos" :key="video.videoId"
-          class="inline-block mr-1 cursor-pointer transform transition-transform duration-450 origin-center-left hover:opacity-100 hover:scale-150 w-48 z-100">
+      <Swiper :slides-per-view="6" :space-between="24" navigation scrollbar mousewheel class="netflix-swiper">
+        <SwiperSlide v-for="video in seventhSectionVideos" :key="video.videoId">
           <a v-if="video.videoId" :href="'https://www.youtube.com/watch?v=' + video.videoId" target="_blank" class="w-52">
-            <img :src="video.URL" alt="Thumbnail" class="w-52" />
+            <img :src="video.URL" alt="Thumbnail" class="w-52 card-slide" />
           </a>
-        </Slide>
-        <template #addons>
-          <Navigation />
-        </template>
-      </Carousel>
+        </SwiperSlide>
+      </Swiper>
     </section>
-
-    <section class="bg-black shadow">
-      <h3 class="text-gray-200 mx-8 pt-6 text-xl">cmais</h3>
-      <Carousel :settings="settings" :breakpoints="breakpoints" class="w-full">
-        <Slide v-for="video in seventhSectionVideos" :key="video.videoId"
-          class="inline-block mr-1 cursor-pointer transform transition-transform duration-450 origin-center-left hover:opacity-100 hover:scale-150 w-48 z-100">
-          <a v-if="video.videoId" :href="'https://www.youtube.com/watch?v=' + video.videoId" target="_blank" class="w-52">
-            <img :src="video.URL" alt="Thumbnail" class="w-52" />
-          </a>
-        </Slide>
-        <template #addons>
-          <Navigation />
-        </template>
-      </Carousel>
-    </section>
-
-    <section class="bg-black shadow">
-      <h3 class="text-gray-200 mx-8 pt-6 text-xl">Kotlin</h3>
-      <Carousel :settings="settings" :breakpoints="breakpoints" class="w-full">
-        <Slide v-for="video in seventhSectionVideos" :key="video.videoId"
-          class="inline-block mr-1 cursor-pointer transform transition-transform duration-450 origin-center-left hover:opacity-100 hover:scale-150 w-48 z-100">
-          <a v-if="video.videoId" :href="'https://www.youtube.com/watch?v=' + video.videoId" target="_blank" class="w-52">
-            <img :src="video.URL" alt="Thumbnail" class="w-52" />
-          </a>
-        </Slide>
-        <template #addons>
-          <Navigation />
-        </template>
-      </Carousel>
-    </section>
-
     <section class="bg-black shadow">
       <h3 class="text-gray-200 mx-8 pt-6 text-xl">TypeScript</h3>
-      <Carousel :settings="settings" :breakpoints="breakpoints" class="w-full">
-        <Slide v-for="video in eighthSectionVideos" :key="video.videoId"
-          class="inline-block mr-1 cursor-pointer transform transition-transform duration-450 origin-center-left hover:opacity-100 hover:scale-150 w-48 z-100">
+      <Swiper :slides-per-view="6" :space-between="24" navigation scrollbar mousewheel class="netflix-swiper">
+        <SwiperSlide v-for="video in eighthSectionVideos" :key="video.videoId">
           <a v-if="video.videoId" :href="'https://www.youtube.com/watch?v=' + video.videoId" target="_blank" class="w-52">
-            <img :src="video.URL" alt="Thumbnail" class="w-52" />
+            <img :src="video.URL" alt="Thumbnail" class="w-52 card-slide" />
           </a>
-        </Slide>
-        <template #addons>
-          <Navigation />
-        </template>
-      </Carousel>
+        </SwiperSlide>
+      </Swiper>
     </section>
-
     <section class="bg-black shadow">
       <h3 class="text-gray-200 mx-8 pt-6 text-xl">Node.js</h3>
-      <Carousel :settings="settings" :breakpoints="breakpoints" class="w-full">
-        <Slide v-for="video in ninthSectionVideos" :key="video.videoId"
-          class="inline-block mr-1 cursor-pointer transform transition-transform duration-450 origin-center-left hover:opacity-100 hover:scale-150 w-48 z-100">
+      <Swiper :slides-per-view="6" :space-between="24" navigation scrollbar mousewheel class="netflix-swiper">
+        <SwiperSlide v-for="video in ninthSectionVideos" :key="video.videoId">
           <a v-if="video.videoId" :href="'https://www.youtube.com/watch?v=' + video.videoId" target="_blank" class="w-52">
-            <img :src="video.URL" alt="Thumbnail" class="w-52" />
+            <img :src="video.URL" alt="Thumbnail" class="w-52 card-slide" />
           </a>
-        </Slide>
-        <template #addons>
-          <Navigation />
-        </template>
-      </Carousel>
+        </SwiperSlide>
+      </Swiper>
     </section>
-
   </div>
 </template>
+
+<style>
+.netflix-swiper {
+  padding-bottom: 32px;
+}
+.netflix-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.card-slide {
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s, border 0.2s;
+  border-radius: 12px;
+  background: #181818;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.45);
+  border: 2px solid transparent;
+  overflow: hidden;
+}
+.card-slide:hover {
+  transform: scale(1.18) translateY(-12px);
+  z-index: 10;
+  box-shadow: 0 12px 40px 0 rgba(229,9,20,0.25), 0 8px 32px rgba(0,0,0,0.55);
+  border: 2px solid #e50914;
+}
+.card-slide img {
+  border-radius: 12px;
+  transition: filter 0.3s;
+  filter: brightness(0.95) contrast(1.1);
+}
+.card-slide:hover img {
+  filter: brightness(1.05) contrast(1.2);
+}
+</style>
 
 
