@@ -60,7 +60,7 @@ async function searchVideos() {
     const videos = await getVideosCollection();
 
     // Defina o termo que você deseja procurar na descrição
-    const JavaScript = "JavaScript";
+  const JavaScript = "JavaScripts";
     const PHP = "PHP";
     const Python = "Python";
     const Java = "Java";
