@@ -1,15 +1,11 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
-   <div id="app" class="bg-slate-950">
-      <RouterView />
-   </div>
-
-   
-
+  <div id="app">
+    <RouterView />
+  </div>
 </template>
 
 

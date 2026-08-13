@@ -45,10 +45,11 @@ onMounted(async () => {
   setTimeout(() => {
     const tracks = document.querySelectorAll('.carousel__track');
     tracks.forEach(track => {
-      track.addEventListener('wheel', function(e: WheelEvent) {
-        if (e.deltaY === 0) return;
-        e.preventDefault();
-        track.scrollLeft += e.deltaY;
+      track.addEventListener('wheel', function(e: Event) {
+        const wheelEvent = e as WheelEvent;
+        if (wheelEvent.deltaY === 0) return;
+        wheelEvent.preventDefault();
+        track.scrollLeft += wheelEvent.deltaY;
       });
     });
   }, 500);

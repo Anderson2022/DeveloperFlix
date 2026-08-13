@@ -1,107 +1,34 @@
-/* color palette from <https://github.com/vuejs/theme> */
-:root {
-  --vt-c-white: #000000;
-  --vt-c-white-soft: #000000;
-  --vt-c-white-mute: #000000;
+:root{color-scheme:dark;--background:#080a0f;--accent:#ef233c;font-family:Inter,"Segoe UI",Arial,sans-serif;font-synthesis:none;text-rendering:optimizeLegibility}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;background:var(--background)}
+body{min-width:320px;min-height:100vh;background:var(--background);color:#fff;-webkit-font-smoothing:antialiased}
+button,input{font:inherit}
+button,a{transition:color .2s,background-color .2s,transform .2s}
+::selection{background:var(--accent);color:#fff}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:#080a0f}::-webkit-scrollbar-thumb{background:#30333c;border-radius:8px}
 
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
-
-  --vt-c-indigo: #2c3e50;
-
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
-}
-
-/* semantic color variables for this project */
-:root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
-
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
-
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
-
-  --section-gap: 160px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
-
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-  }
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  font-weight: normal;
-}
-
-body {
-  min-height: 100vh;
-  color: var(--color-text);
-  background: var(--color-background);
-  transition:
-    color 0.5s,
-    background-color 0.5s;
-  line-height: 1.6;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.disable-scroll-x {
-  overflow-x: hidden;
-}
-
-.netflix-scroll-button {
-  background: #000000;
-  border: none;
-  cursor: pointer;
-}
-
-.netflix-content-container {
-  overflow-x: hidden;
-  white-space: nowrap;
-  display: inline-block;
-
-}
-.custom-navigation .carousel__nav-button {
-  color: white;
-  /* Set the color to white */
-}
+/* Global catalog fallback: guarantees layout during Vite hot reloads. */
+.catalog{width:100%;padding:0 4vw}
+.content-row{width:100%;margin:0 0 50px}
+.content-row>header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:16px}
+.content-row>header h2{margin:0;color:#f4f4f6;font-size:22px;font-weight:800;line-height:1.25}
+.content-row>header p{margin-top:4px;color:#777c88;font-size:12px}
+.content-row>header a{color:#9a9eaa;text-decoration:none;font-size:11px;font-weight:700}
+.rail-wrap{position:relative;width:100%}
+.rail{width:100%;display:grid;grid-auto-flow:column;grid-template-rows:1fr;grid-auto-columns:clamp(245px,23vw,350px);gap:13px;overflow-x:auto;overflow-y:hidden;padding:5px 2px 18px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.rail .card{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:9px;background:#171a22;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease}
+.rail .card:hover{transform:translateY(-5px);box-shadow:0 18px 35px rgba(0,0,0,.45)}
+.rail .card>img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+.rail .card:hover>img{transform:scale(1.06)}
+.rail .shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,6,10,.96),transparent 64%)}
+.rail .tag,.rail .duration{position:absolute;top:12px;padding:4px 7px;border-radius:4px;font-size:8px;font-weight:900;line-height:1.3;letter-spacing:1px}
+.rail .tag{left:12px;background:#ef233c;color:#fff}.rail .duration{right:12px;background:rgba(5,7,11,.75);color:#e2e3e6}
+.rail .card>button{position:absolute;inset:0;margin:auto;width:44px;height:44px;border:1px solid rgba(255,255,255,.65);border-radius:50%;background:rgba(8,10,15,.7);color:#fff;opacity:0;transform:scale(.8);cursor:pointer;transition:.25s ease}
+.rail .card:hover>button{opacity:1;transform:scale(1)}
+.rail .card-copy{position:absolute;left:15px;right:15px;bottom:13px}
+.rail .card-copy h3{margin:0;color:#fff;font-size:14px;font-weight:750;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rail .card-copy p{margin:3px 0 0;color:#a0a3ab;font-size:9px}
+.rail-wrap>.arrow{position:absolute;z-index:5;top:50%;width:38px;height:64px;transform:translateY(-60%);border:1px solid rgba(255,255,255,.1);border-radius:8px;background:rgba(7,9,14,.82);color:#fff;font-size:30px;opacity:0;cursor:pointer;transition:opacity .2s ease}
+.rail-wrap:hover>.arrow{opacity:1}.rail-wrap>.arrow.left{left:-16px}.rail-wrap>.arrow.right{right:-16px}
+@media(max-width:700px){.catalog{padding:0 16px}.content-row{margin-bottom:34px}.content-row>header h2{font-size:19px}.content-row>header a{display:none}.rail{grid-auto-columns:78vw}.rail-wrap>.arrow{display:none}}
